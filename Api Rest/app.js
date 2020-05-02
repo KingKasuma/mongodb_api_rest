@@ -6,6 +6,7 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // cargar rutas
+var fruta_routes = require('./routes/fruta');
 
 // body-parser
 app.use(bodyParser.urlencoded({extended: false}));
@@ -13,11 +14,8 @@ app.use(bodyParser.json());
 
 // Configurar CORS
 
-// rutas
-app.get('/', (req, res) => {
-	res.status(200).send({
-		message: 'Esta ruta es de prueba en mi api restful con node y mongo'
-	});
-});
+// rutas base;
+app.use('/api', fruta_routes);
+
 
 module.exports = app;
